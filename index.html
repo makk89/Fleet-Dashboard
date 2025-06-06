@@ -3,99 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GESCO Fleet Dashboard</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>GESCO Fleet - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>GESCO Fleet DASHBOARD</h1>
-    <img src="flag.png" alt="GESCO Logo" class="logo"/>
-    <div class="header-right">
-      <p><strong>Last Refresh Date:</strong> 06/06/2025</p>
-    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="Indian Flag" class="flag"/>
+    <h1>GESCO Fleet - Dashboard</h1>
+    <div class="last-updated">Last Updated: 06/06/2025 14:00</div>
   </header>
 
-  <section class="filters">
-    <label>TechManager
-      <select>
-        <option>Tanker-Fleet</option>
-      </select>
-    </label>
-    <label>Fleet
-      <select>
-        <option>Operation-1</option>
-      </select>
-    </label>
-    <label>Ship
-      <select>
-        <option>Multiple selections</option>
-        <option>JAG Alok</option>
-        <option>JAG Priyanka</option>
-      </select>
-    </label>
-  </section>
-
-  <main class="dashboard-grid">
-    <div class="card">
-      <h2>Technical Defects</h2>
-      <ul>
-        <li>Open Defects: <span class="value">11</span></li>
-        <li>Over Due - Technical Defects: <span class="value red">1</span></li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Purchasing</h2>
-      <ul>
-        <li>Purchase Status - Critical Parts: <span class="value">5</span></li>
-        <li>Breach Invoice > 15 Days: <span class="value red">54</span></li>
-        <li>RFQ Completed (not Evaluated): <span class="value">40</span></li>
-        <li>POs Pending Approval: <span class="value red">7</span></li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Planned Maintenance</h2>
-      <ul>
-        <li>Overdue Standard Jobs: <span class="value red">27</span></li>
-        <li>Due Standard Jobs: <span class="value">90</span></li>
-        <li>Critical Overdue Standard Jobs: <span class="value red">13</span></li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>HSQE</h2>
-      <ul>
-        <li>Vetting Last 12 M: <span class="value">14</span></li>
-        <li>CARs Overdue - Propose By: <span class="value red">1</span></li>
-        <li>CARs Overdue - Correct By: <span class="value red">1</span></li>
-        <li>Incidents - Open: <span class="value">24</span></li>
-        <li>Certificates - Expiring in 3M: <span class="value">18</span></li>
-      </ul>
-    </div>
-
-    <div class="card full">
-      <h2>Budget (Committed Cost)</h2>
-      <table>
-        <thead>
-          <tr><th>Account</th><th>Annual</th><th>Spent</th><th>Current FY</th><th>Total</th><th>Deviation</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Crew</td><td>8,314,100</td><td>31,277</td><td>3,315,110</td><td>3,346,387</td><td class="green">+3%</td></tr>
-          <tr><td>Insurance</td><td>519,331</td><td>–</td><td>314,314</td><td>314,314</td><td class="red">-46%</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h2>Lifeboat Lowering</h2>
-      <p class="big-number">5</p>
-    </div>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Vessel name</th>
+          <th>Voyage information</th>
+          <th>Cargo / Ballast</th>
+          <th>Charterer</th>
+          <th>Master & CHENG</th>
+          <th>KPI Compliance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JAG Amar</td>
+          <td>
+            <div class="voyage">
+              04-June-2025 1800 Z<br>Fujairah, U.A.E<br>→<br>09-June-2025 1900 Z<br>Mangalore, India
+            </div>
+          </td>
+          <td>Iron Ore</td>
+          <td>NLC</td>
+          <td>Capt. Ajay<br>Mr. Joseph</td>
+          <td><span class="kpi green">1</span></td>
+        </tr>
+        <tr>
+          <td>JAG Priyanka</td>
+          <td>
+            <div class="voyage">
+              05-June-2025 1800 Z<br>Sikka, India<br>→<br>13-June-2025 1900 Z<br>Singapore
+            </div>
+          </td>
+          <td>HSD + UMS</td>
+          <td>Reliance</td>
+          <td>Capt. Partha<br>Mr. K P Singh</td>
+          <td><span class="kpi orange">3</span></td>
+        </tr>
+        <tr>
+          <td>JAG Punit</td>
+          <td>
+            <div class="voyage">
+              03-June-2025 1800 Z<br>Togo, Lome<br>→<br>18-June-2025 1900 Z<br>Amsterdam, NL
+            </div>
+          </td>
+          <td>JET A1</td>
+          <td>Trafigura</td>
+          <td>Capt. Amar Pratap<br>Mr. Garg</td>
+          <td><span class="kpi red">5</span></td>
+        </tr>
+      </tbody>
+    </table>
   </main>
-
-  <footer>
-    <a href="#">Go to Noon KPIs</a>
-  </footer>
 
   <script src="script.js"></script>
 </body>
