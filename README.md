@@ -29,6 +29,12 @@ python app.py            # serves on http://127.0.0.1:5050
 > On macOS, port 5000 is taken by AirPlay; this app defaults to **5050**.
 > Override with `PORT=8080 python app.py`.
 
+For a sturdier local run, use the bundled gunicorn (localhost only):
+
+```bash
+gunicorn -w 2 -b 127.0.0.1:5060 app:app
+```
+
 ---
 
 ## How it's wired
