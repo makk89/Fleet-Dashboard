@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fleet Monitoring Dashboard</title>
+
+  <!-- Leaflet (map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Chart.js (MIS charts) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+</head>
+<body>
+
+  <!-- ===================== TOP BAR ===================== -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">⚓</span>
+      <div>
+        <h1>FLEET MONITORING DASHBOARD</h1>
+        <p class="subtitle">Live AIS tracking &amp; vessel MIS · prototype</p>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <div class="live-pill" id="livePill">
+        <span class="dot"></span> LIVE
+        <span class="live-meta" id="liveMeta">connecting…</span>
+      </div>
+      <label class="filter">
+        Tech Manager
+        <select id="filterManager"><option>SMM</option></select>
+      </label>
+      <label class="filter">
+        Fleet
+        <select id="filterFleet"><option>Scorpio Fleet (all)</option></select>
+      </label>
+      <input id="searchBox" class="search" type="search" placeholder="Search vessel…" />
+    </div>
+  </header>
+
+  <!-- ===================== STAT STRIP ===================== -->
+  <section class="statstrip" id="statStrip">
+    <div class="stat"><span class="stat-val" id="statTotal">–</span><span class="stat-lbl">Vessels</span></div>
+    <div class="stat"><span class="stat-val" id="statUnderway">–</span><span class="stat-lbl">Underway</span></div>
+    <div class="stat"><span class="stat-val" id="statAnchor">–</span><span class="stat-lbl">At Anchor</span></div>
+    <div class="stat"><span class="stat-val" id="statManeuver">–</span><span class="stat-lbl">Maneuvering</span></div>
+    <div class="stat"><span class="stat-val" id="statAvgSpeed">–</span><span class="stat-lbl">Avg Speed (kts)</span></div>
+  </section>
+
+  <!-- ===================== MAP ===================== -->
+  <main class="map-wrap">
+    <div id="map"></div>
+    <div class="map-hint" id="mapHint">Click any vessel to open its MIS dashboard</div>
+  </main>
+
+  <!-- ===================== MIS SLIDE-OVER PANEL ===================== -->
+  <aside class="mis-panel" id="misPanel" aria-hidden="true">
+    <div class="mis-loading" id="misLoading">Loading vessel data…</div>
+    <div class="mis-content" id="misContent" hidden>
+
+      <div class="mis-header">
+        <div>
+          <h2 id="misName">Vessel</h2>
+          <p class="mis-sub" id="misSub"></p>
+        </div>
+        <button class="mis-close" id="misClose" aria-label="Close">×</button>
+      </div>
+
+      <!-- Voyage / position -->
+      <div class="mis-voyage" id="misVoyage"></div>
+
+      <!-- Alerts -->
+      <div class="mis-alerts" id="misAlerts"></div>
+
+      <!-- KPI cards -->
+      <div class="mis-grid" id="misKpis"></div>
+
+      <!-- Charts -->
+      <div class="mis-card">
+        <h3>Noon Report — Fuel Consumption (MT/day)</h3>
+        <canvas id="fuelChart" height="120"></canvas>
+      </div>
+      <div class="mis-card">
+        <h3>Budget — Committed Cost vs Annual</h3>
+        <canvas id="budgetChart" height="160"></canvas>
+      </div>
+
+      <!-- Particulars + crew -->
+      <div class="mis-grid">
+        <div class="mis-card"><h3>Vessel Particulars</h3><table id="misParticulars"></table></div>
+        <div class="mis-card"><h3>Crew</h3><table id="misCrew"></table></div>
+      </div>
+
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
